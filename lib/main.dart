@@ -1,47 +1,38 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:my_budget_app/components/center_container.dart';
+import 'package:my_budget_app/screens/auth/login.screen.dart';
+import 'package:my_budget_app/screens/homepage.screen.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MultiProvider(providers: [
+    Provider(create: (_) => Dio())
+  ], child: const App()));
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+// App entry point - Handles authentication state
+class App extends StatelessWidget {
+  const App({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
+    return GestureDetector(
+      onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+      child: FutureBuilder(
+        future: null, // TODO : Handle storage call to gather the user if exists
+        builder: (context, snapshot) {
+          // TODO : Check snapshot state
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const <Widget>[
-            Text('My Budget App ...'),
-            SizedBox(height: 32),
-            CircularProgressIndicator()
-          ],
-        ),
+          return MaterialApp(
+            title: 'Flutter Demo',
+            debugShowCheckedModeBanner: false,
+            theme: ThemeData(
+              primarySwatch: Colors.blue,
+            ),
+            home: const LoginScreen(),
+          );
+        },
       ),
     );
   }
