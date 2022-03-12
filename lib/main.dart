@@ -1,8 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:my_budget_app/components/center_container.dart';
 import 'package:my_budget_app/screens/auth/login.screen.dart';
-import 'package:my_budget_app/screens/homepage.screen.dart';
 import 'package:provider/provider.dart';
 
 void main() {
