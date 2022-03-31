@@ -1,11 +1,15 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:my_budget_app/screens/auth/login.screen.dart';
+import 'package:my_budget_app/services/api/auth/login.dart';
 import 'package:provider/provider.dart';
 
 void main() {
   runApp(MultiProvider(providers: [
-    Provider(create: (_) => Dio())
+    Provider(create: (_) => Dio()),
+    Provider<APIService>(
+      create: (ctx) => APIService(ctx.read()),
+    )
   ], child: const App()));
 }
 
