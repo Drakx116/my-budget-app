@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_budget_app/screens/homepage.screen.dart';
 import 'package:my_budget_app/services/api/auth/login.dart';
+import 'package:my_budget_app/services/secure_storage.service.dart';
 import 'package:my_budget_app/utils/forms/fields/text.field.dart';
 import 'package:provider/provider.dart';
 
@@ -22,8 +23,16 @@ class _LoginFormState extends State<LoginForm>
   final TextEditingController passwordController = TextEditingController();
 
   @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final api = context.read<APIService>.call();
+    final storage = context.read<SecureStorage>.call();
 
     return Form(
       key: GlobalKey<FormState>(),
@@ -45,13 +54,14 @@ class _LoginFormState extends State<LoginForm>
 
                     var token = await api.login(email: email, password: password);
 
-                    // TODO : Store token
+                    await storage.write('token', token);
 
                     Navigator.push(context,
                       MaterialPageRoute(builder: (context) => const HomepageScreen()),
                     );
                   } catch (e) {
                     // TODO : Handle errors (401 especially)
+                    print(e);
                     return;
                   }
                 },

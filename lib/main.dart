@@ -1,12 +1,16 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:my_budget_app/models/secured_item.model.dart';
 import 'package:my_budget_app/screens/auth/login.screen.dart';
+import 'package:my_budget_app/screens/homepage.screen.dart';
 import 'package:my_budget_app/services/api/auth/login.dart';
+import 'package:my_budget_app/services/secure_storage.service.dart';
 import 'package:provider/provider.dart';
 
 void main() {
   runApp(MultiProvider(providers: [
     Provider(create: (_) => Dio()),
+    Provider(create: (_) => SecureStorage()),
     Provider<APIService>(
       create: (ctx) => APIService(ctx.read()),
     )
@@ -22,17 +26,21 @@ class App extends StatelessWidget {
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: FutureBuilder(
-        future: null, // TODO : Handle storage call to gather the user if exists
+        future: context.read<SecureStorage>.call().get('token'),
         builder: (context, snapshot) {
-          // TODO : Check snapshot state
+          if (snapshot.hasData) {
+            var tokenSecuredItem = snapshot.data;
+            if (tokenSecuredItem is SecuredItem) {
+              return const MaterialApp(
+                  debugShowCheckedModeBanner: false,
+                  home: HomepageScreen()
+              );
+            }
+          }
 
-          return MaterialApp(
-            title: 'Flutter Demo',
+          return const MaterialApp(
             debugShowCheckedModeBanner: false,
-            theme: ThemeData(
-              primarySwatch: Colors.blue,
-            ),
-            home: const LoginScreen(),
+            home: LoginScreen()
           );
         },
       ),
