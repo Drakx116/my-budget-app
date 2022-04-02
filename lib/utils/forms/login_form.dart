@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:my_budget_app/constants/form_field.constants.dart' as field_type;
-import 'package:my_budget_app/screens/homepage.screen.dart';
-import 'package:my_budget_app/services/api/auth/login.dart';
-import 'package:my_budget_app/services/secure_storage.service.dart';
-import 'package:my_budget_app/utils/forms/fields/text.field.dart';
+import 'package:my_budget_app/constants/form_field_constants.dart' as field_type;
+import 'package:my_budget_app/screens/homepage_screen.dart';
+import 'package:my_budget_app/services/api_service.dart';
+import 'package:my_budget_app/services/secure_storage_service.dart';
+import 'package:my_budget_app/utils/forms/fields/text_field.dart';
 import 'package:provider/provider.dart';
 
 class LoginForm extends StatefulWidget
@@ -35,8 +35,8 @@ class _LoginFormState extends State<LoginForm>
     final api = context.read<APIService>.call();
     final storage = context.read<SecureStorage>.call();
 
-    var emailField = FormTextField(label: 'Adresse Email', controller: emailController, type: field_type.EMAIL);
-    var passwordField = FormTextField(label: 'Mot de Passe', controller: passwordController, type: field_type.LOGIN_PASSWORD);
+    var emailField = ExtendedFormTextField(label: 'Adresse Email', controller: emailController, type: field_type.EMAIL);
+    var passwordField = ExtendedFormTextField(label: 'Mot de Passe', controller: passwordController, type: field_type.LOGIN_PASSWORD);
 
     return Form(
       key: GlobalKey<FormState>(),

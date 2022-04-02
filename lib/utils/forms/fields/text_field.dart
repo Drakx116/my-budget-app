@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:my_budget_app/constants/form_field.constants.dart' as field_type;
-import 'package:my_budget_app/utils/forms/validators/validator.factory.dart' as validator_factory;
+import 'package:my_budget_app/constants/form_field_constants.dart' as field_type;
+import 'package:my_budget_app/utils/forms/validators/validator_factory.dart' as validator_factory;
 
-class FormTextField extends StatefulWidget
+class ExtendedFormTextField extends StatefulWidget
 {
   final String label;
   final TextEditingController controller;
@@ -11,7 +11,7 @@ class FormTextField extends StatefulWidget
   String? _error;
   String? _value;
 
-  FormTextField({
+  ExtendedFormTextField({
     Key? key,
     required this.type,
     required this.label,
@@ -23,7 +23,7 @@ class FormTextField extends StatefulWidget
 
   @override
   State<StatefulWidget> createState() {
-    return _FormTextFieldState();
+    return _ExtendedFormTextFieldState();
   }
 
   bool isValid()
@@ -44,9 +44,9 @@ class FormTextField extends StatefulWidget
   }
 }
 
-class _FormTextFieldState extends State<FormTextField>
+class _ExtendedFormTextFieldState extends State<ExtendedFormTextField>
 {
-  _FormTextFieldState();
+  _ExtendedFormTextFieldState();
 
   @override
   Widget build(BuildContext context) {

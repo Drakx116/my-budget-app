@@ -1,5 +1,5 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:my_budget_app/models/secured_item.model.dart';
+import 'package:my_budget_app/models/secured_item_model.dart';
 
 class SecureStorage
 {

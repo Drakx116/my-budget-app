@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:my_budget_app/screens/auth/login.screen.dart';
-import 'package:my_budget_app/services/secure_storage.service.dart';
+import 'package:my_budget_app/screens/auth/login_screen.dart';
+import 'package:my_budget_app/services/secure_storage_service.dart';
 import 'package:provider/provider.dart';
 
 class HomepageScreen extends StatelessWidget {
