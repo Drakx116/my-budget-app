@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:my_budget_app/components/snackbar.dart';
 import 'package:my_budget_app/constants/form_field_constants.dart' as field_type;
+import 'package:my_budget_app/constants/snackbar_status_constants.dart' as level;
 import 'package:my_budget_app/screens/homepage_screen.dart';
 import 'package:my_budget_app/services/api_service.dart';
 import 'package:my_budget_app/services/secure_storage_service.dart';
@@ -65,8 +67,12 @@ class _LoginFormState extends State<LoginForm>
                     MaterialPageRoute(builder: (context) => const HomepageScreen()),
                   );
                 } catch (e) {
-                  // TODO : Handle errors (401 especially) with Flash messages
-                  print(e);
+                  if (e.toString().contains('401')) {
+                    const ExtendedSnackBar(
+                      content: 'Combinaison adresse email et mot de passe éronnée.',
+                      status: level.ERROR,
+                    ).show(context);
+                  }
                   return;
                 }
               },
