@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:my_budget_app/components/snackbar.dart';
 import 'package:my_budget_app/constants/form_field_constants.dart' as field_type;
 import 'package:my_budget_app/constants/snackbar_status_constants.dart' as level;
+import 'package:my_budget_app/models/api/requests/user_login.dart';
 import 'package:my_budget_app/screens/homepage_screen.dart';
 import 'package:my_budget_app/services/api_service.dart';
 import 'package:my_budget_app/services/secure_storage_service.dart';
@@ -10,7 +11,10 @@ import 'package:provider/provider.dart';
 
 class LoginForm extends StatefulWidget
 {
-  const LoginForm({ Key? key }) : super(key: key);
+  // This optional parameter si meant to pass the email on valid registration
+  final String? givenEmail;
+
+  const LoginForm({ Key? key, this.givenEmail }) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
@@ -40,6 +44,10 @@ class _LoginFormState extends State<LoginForm>
     var emailField = ExtendedFormTextField(label: 'Adresse Email', controller: emailController, type: field_type.EMAIL);
     var passwordField = ExtendedFormTextField(label: 'Mot de Passe', controller: passwordController, type: field_type.LOGIN_PASSWORD);
 
+    if (widget.givenEmail != null && widget.givenEmail!.isNotEmpty) {
+      emailField.setValue(widget.givenEmail ?? '');
+    }
+
     return Form(
       key: GlobalKey<FormState>(),
       child: Column(
@@ -55,11 +63,12 @@ class _LoginFormState extends State<LoginForm>
                     return;
                   }
 
-                  // At this point, the email and password fields are valid and well set
-                  var token = await api.login(
-                      email: emailField.getValue() ?? '',
-                      password: passwordField.getValue() ?? ''
-                  );
+                  var credentials = UserLoginModel.fromJson({
+                    "username": emailField.getValue(),
+                    "password": passwordField.getValue(),
+                  });
+
+                  var token = await api.login(credentials: credentials);
 
                   await storage.write('token', token);
 

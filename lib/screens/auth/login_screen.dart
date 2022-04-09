@@ -7,13 +7,15 @@ import 'package:my_budget_app/utils/forms/login_form.dart';
 
 class LoginScreen extends StatelessWidget
 {
-  const LoginScreen({ Key? key }) : super(key: key);
+  final String? givenEmail;
+
+  const LoginScreen({ Key? key, this.givenEmail }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return CenterContainer(widgets: [
       const WidgetTitle(text: 'Connexion'),
-      const LoginForm(),
+      LoginForm(givenEmail: givenEmail),
       const ExtendedDivider(orDivider: true, padding: 64),
 
       Column(
