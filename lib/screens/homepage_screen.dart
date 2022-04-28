@@ -8,27 +8,22 @@ class HomepageScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text('Welcome to Your Budget App !'),
-            ElevatedButton(
-              onPressed: () async {
-                var secureService = context.read<SecureStorage>.call();
-                await secureService.delete('token');
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        const Text('Welcome to Your Budget App !'),
+        ElevatedButton(
+          onPressed: () async {
+            var secureService = context.read<SecureStorage>.call();
+            await secureService.delete('token');
 
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const LoginScreen())
-                );
-              },
-              child: const Text('Se déconnecter')
-            )
-          ],
-        ),
-      ),
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const LoginScreen())
+            );
+          },
+          child: const Text('Se déconnecter')
+        )
+      ],
     );
   }
 }

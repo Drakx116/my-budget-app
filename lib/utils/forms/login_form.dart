@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:my_budget_app/components/containers/base_container.dart';
 import 'package:my_budget_app/components/snackbar.dart';
 import 'package:my_budget_app/constants/form_field_constants.dart' as field_type;
 import 'package:my_budget_app/constants/snackbar_status_constants.dart' as level;
 import 'package:my_budget_app/models/api/requests/user_login.dart';
-import 'package:my_budget_app/screens/homepage_screen.dart';
 import 'package:my_budget_app/services/api_service.dart';
 import 'package:my_budget_app/services/secure_storage_service.dart';
 import 'package:my_budget_app/utils/forms/fields/text_field.dart';
@@ -38,9 +38,6 @@ class _LoginFormState extends State<LoginForm>
 
   @override
   Widget build(BuildContext context) {
-    final api = context.read<APIService>.call();
-    final storage = context.read<SecureStorage>.call();
-
     var emailField = ExtendedFormTextField(label: 'Adresse Email', controller: emailController, type: field_type.EMAIL);
     var passwordField = ExtendedFormTextField(label: 'Mot de Passe', controller: passwordController, type: field_type.LOGIN_PASSWORD);
 
@@ -68,14 +65,20 @@ class _LoginFormState extends State<LoginForm>
                     "password": passwordField.getValue(),
                   });
 
+                  final api = context.read<APIService>.call();
+                  final storage = context.read<SecureStorage>.call();
+
+                  // TODO : Validate token integrity
                   var token = await api.login(credentials: credentials);
 
+                  // Store token
                   await storage.write('token', token);
 
                   Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const HomepageScreen()),
+                    MaterialPageRoute(builder: (context) => const BaseContainer()),
                   );
-                } catch (e) {
+                }
+                catch (e) {
                   if (e.toString().contains('401')) {
                     const ExtendedSnackBar(
                       content: 'Combinaison adresse email et mot de passe éronnée.',

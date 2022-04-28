@@ -1,9 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:my_budget_app/models/secured_item_model.dart';
-import 'package:my_budget_app/screens/auth/login_screen.dart';
-import 'package:my_budget_app/screens/homepage_screen.dart';
+import 'package:my_budget_app/components/containers/default_container.dart';
 import 'package:my_budget_app/services/api_service.dart';
 import 'package:my_budget_app/services/secure_storage_service.dart';
 import 'package:provider/provider.dart';
@@ -28,24 +26,9 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-      child: FutureBuilder(
-        future: context.read<SecureStorage>.call().get('token'),
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            var tokenSecuredItem = snapshot.data;
-            if (tokenSecuredItem is SecuredItem) {
-              return const MaterialApp(
-                  debugShowCheckedModeBanner: false,
-                  home: HomepageScreen()
-              );
-            }
-          }
-
-          return const MaterialApp(
-            debugShowCheckedModeBanner: false,
-            home: LoginScreen()
-          );
-        },
+      child: const MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: DefaultContainer()
       ),
     );
   }

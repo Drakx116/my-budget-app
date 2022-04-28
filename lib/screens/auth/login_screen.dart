@@ -9,7 +9,7 @@ class LoginScreen extends StatelessWidget
 {
   final String? givenEmail;
 
-  const LoginScreen({ Key? key, this.givenEmail }) : super(key: key);
+  const LoginScreen({Key? key, this.givenEmail}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
