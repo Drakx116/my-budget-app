@@ -35,7 +35,7 @@ class App extends StatelessWidget {
         home: const DefaultContainer(),
         routes: {
           '': (context) => const BaseContainer(),
-          'expense': (context) => const ExpenseScreen(),
+          'expense': (context) => ExpenseScreen(),
           'income': (context) => const IncomeScreen()
         },
       ),
