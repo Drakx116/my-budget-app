@@ -34,11 +34,15 @@ class _BaseContainerState extends State<BaseContainer> {
         },
         child: const Icon(Icons.add),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.miniCenterDocked,
+      floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
       bottomNavigationBar: BottomNavigationBar(
+        fixedColor: Colors.blue,
+        unselectedItemColor: Colors.grey,
         items: const [
-          BottomNavigationBarItem(label: 'Budget', icon: Icon(Icons.home)),
-          BottomNavigationBarItem(label: 'Profil', icon: Icon(Icons.account_circle_rounded))
+          BottomNavigationBarItem(label: 'Accueil', icon: Icon(Icons.home)),
+          // BottomNavigationBarItem(label: 'Opérations', icon: Icon(Icons.euro)),
+          // BottomNavigationBarItem(label: 'Statistiques', icon: Icon(Icons.analytics_outlined)),
+          BottomNavigationBarItem(label: 'Profil', icon: Icon(Icons.account_circle_rounded)),
         ],
         onTap: _onItemTap,
         currentIndex: _currentIndex,
