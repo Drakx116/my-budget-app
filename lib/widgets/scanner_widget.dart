@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:learning_input_image/learning_input_image.dart';
-import 'package:my_budget_app/screens/expense_screen.dart';
+import 'package:my_budget_app/screens/scanner_screen.dart';
 
 enum CameraType { front, rear }
 
@@ -12,7 +12,7 @@ class ScannerWidget extends StatefulWidget
   final CameraType cameraDefault;
   final ResolutionPreset resolutionPreset;
   final Function(InputImage inputImage) onImage;
-  final State<ExpenseScreen> parent;
+  final State<ScannerScreen> parent;
 
   const ScannerWidget({
     Key? key,
@@ -94,30 +94,78 @@ class _ScannerWidgetState extends State<ScannerWidget> {
     });
   }
 
+  Widget get _userPicture => Container(
+    width: MediaQuery.of(context).size.width - 32,
+    height: MediaQuery.of(context).size.width - 32,
+    decoration: const BoxDecoration(color: Colors.black),
+    alignment: Alignment.center,
+    child: Image.file(_image!),
+  );
+
+  Widget get _scanIcon => GestureDetector(
+    child: Padding(
+      padding: const EdgeInsets.all(16),
+      child: Image.asset(
+        'assets/images/scan.png',
+        width: MediaQuery.of(context).size.width - 256,
+        color: Colors.blue,
+      ),
+    ),
+    onTap: _takePhoto,
+  );
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const SizedBox(height: 16),
-        SizedBox(
-          height: 240,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              _image != null ? Image.file(_image!) : const Text('Aucune image sélectionnée.'),
-              widget.overlay ?? Container(),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 16),
+              child: _image != null ? _userPicture : _scanIcon
+            )
+          ],
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(child: IconButton(
+                    icon: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const <Widget>[
+                        Icon(Icons.document_scanner, size: 32),
+                        Text(" Scanner")
+                      ]
+                    ), onPressed: _takePhoto)
+                  ),
+                  const Text('OU'),
+                  Expanded(child: IconButton(
+                      icon: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: const <Widget>[
+                          Icon(Icons.upload, size: 32),
+                          Text(" Charger")
+                        ]
+                      ), onPressed: _chooseImage),
+                  ),
+                ]
+              ),
+              GestureDetector(child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const [
+                  Icon(Icons.delete, size: 32),
+                  Text('Effacer')
+                ],
+              ), onTap: _reset),
+              const SizedBox(height: 8)
             ],
           ),
-        ),
-        const SizedBox(height: 16),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            ElevatedButton(child: const Text('Scanner'), onPressed: _takePhoto),
-            ElevatedButton(child: const Text('Choisir'), onPressed: _chooseImage),
-            ElevatedButton(child: const Text('Effacer'), onPressed: _reset)
-          ]
         )
       ],
     );

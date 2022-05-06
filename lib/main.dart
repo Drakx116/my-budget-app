@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:my_budget_app/components/containers/base_container.dart';
 import 'package:my_budget_app/components/containers/default_container.dart';
-import 'package:my_budget_app/screens/expense_screen.dart';
+import 'package:my_budget_app/screens/scanner_screen.dart';
 import 'package:my_budget_app/screens/homepage_screen.dart';
 import 'package:my_budget_app/screens/income_screen.dart';
 import 'package:my_budget_app/services/api_service.dart';
@@ -35,7 +35,7 @@ class App extends StatelessWidget {
         home: const DefaultContainer(),
         routes: {
           '': (context) => const BaseContainer(),
-          'expense': (context) => ExpenseScreen(),
+          'expense': (context) => ScannerScreen(),
           'income': (context) => const IncomeScreen()
         },
       ),
