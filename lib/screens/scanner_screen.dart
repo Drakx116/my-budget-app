@@ -99,10 +99,7 @@ class _ScannerScreenState extends State<ScannerScreen> {
               padding: const EdgeInsets.symmetric(vertical: 32),
               child: (widget.isPriceSet()) ? ElevatedButton(onPressed: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) =>
-                    OperationScreen(
-                      type: OperationType.expense,
-                      amount: double.parse((widget.price ?? '0')).toStringAsFixed(2),
-                    )
+                  OperationScreen(type: OperationType.expense, amount: widget.price)
                 ));
               }, child: const Text('Suivant')) : Container(),
             )

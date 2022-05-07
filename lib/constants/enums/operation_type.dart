@@ -12,3 +12,13 @@ extension GetValue on OperationType {
     }
   }
 }
+
+extension From on OperationType {
+  OperationType from(String value) {
+    switch (value) {
+      case 'Dépense': return OperationType.expense;
+      case 'Rentrée': return OperationType.income;
+      default: return OperationType.expense;
+    }
+  }
+}
