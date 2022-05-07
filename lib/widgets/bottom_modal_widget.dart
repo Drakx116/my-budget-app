@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:my_budget_app/constants/enums/operation_type.dart';
 import 'package:my_budget_app/screens/income_screen.dart';
+import 'package:my_budget_app/screens/operation_screen.dart';
 
 class BottomModal extends StatelessWidget
 {
@@ -48,7 +50,9 @@ class BottomModal extends StatelessWidget
                             )
                           ),
                           onTap: () {
-                            Navigator.popAndPushNamed(context, 'income');
+                            Navigator.push(context, 
+                              MaterialPageRoute(builder: (context) => OperationScreen(type: OperationType.income))
+                            );
                           },
                         ),
                       )
