@@ -39,13 +39,20 @@ class _ScannerScreenState extends State<ScannerScreen> {
     
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Ajouter une dépense'),
-        centerTitle: true,
         elevation: 0,
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
+            Padding(
+              padding: const EdgeInsets.all(16),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: const [
+                  Text('Scanner ou saisir un montant'),
+                ],
+              )
+            ),
             ScannerWidget(
               onImage: (InputImage image) async {
                 TextRecognition textRecognition = TextRecognition();

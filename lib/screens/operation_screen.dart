@@ -45,8 +45,6 @@ class _OperationScreenState extends State<OperationScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        // title: const Text('Enregistrer une opération'),
-        centerTitle: true,
         elevation: 0,
         actions: [
           PopupMenuButton(itemBuilder: (BuildContext context) {
