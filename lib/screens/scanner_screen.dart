@@ -90,7 +90,7 @@ class _ScannerScreenState extends State<ScannerScreen> {
                     inputFormatters: [
                       FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d{0,2}')),
                     ],
-                    onChanged: (price) { widget.price = price; },
+                    onChanged: (price) { setState(() { widget.price = price; }); },
                   )
                 ],
               ),
