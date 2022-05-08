@@ -17,7 +17,7 @@ Future<void> main() async {
     Provider(create: (_) => Dio()),
     Provider(create: (_) => SecureStorage()),
     Provider<APIService>(
-      create: (ctx) => APIService(ctx.read()),
+      create: (ctx) => APIService(ctx.read(), ctx.read()),
     )
   ], child: const App()));
 }

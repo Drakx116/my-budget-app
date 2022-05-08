@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:my_budget_app/components/containers/base_container.dart';
+import 'package:my_budget_app/components/snackbar.dart';
 import 'package:my_budget_app/constants/enums/operation_type.dart';
 import 'package:my_budget_app/constants/enums/payment_method_enum.dart';
+import 'package:my_budget_app/constants/snackbar_status_constants.dart' as level;
+import 'package:my_budget_app/models/api/requests/user_operation.dart';
+import 'package:my_budget_app/services/api_service.dart';
+import 'package:provider/provider.dart';
 
 class OperationScreen extends StatefulWidget
 {
@@ -113,7 +118,36 @@ class _OperationScreenState extends State<OperationScreen> {
                     },
                   ),
                   const SizedBox(height: 16),
-                  (widget.isOperationComplete()) ? ElevatedButton(onPressed: () {}, child: const Text('Enregistrer')) : Container()
+                  (widget.isOperationComplete()) ? ElevatedButton(onPressed: () async {
+                    var api = context.read<APIService>.call();
+
+                    UserOperationModel operation = UserOperationModel(
+                      type: widget.type.name,
+                      method: widget.paymentMethod.name,
+                      amount: double.parse(widget.price).toStringAsFixed(2),
+                      label: widget.label
+                    );
+
+                    try {
+                      await api.createOperation(operation);
+                    } catch (e) {
+                      const ExtendedSnackBar(
+                        content: 'L\'opération n\'a pas pu être enregistrée. Veuillez réessayer ultérieurement.',
+                        status: level.ERROR,
+                      ).show(context);
+
+                      return;
+                    }
+
+                    ExtendedSnackBar(
+                      content: 'Une ${widget.type.value} de ${double.parse(widget.price).toStringAsFixed(2)}€ a bien été enregistrée.',
+                      status: level.SUCCESS,
+                    ).show(context);
+
+                    Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => const BaseContainer()),
+                    );
+                  }, child: const Text('Enregistrer')) : Container()
                 ]
               )
             ),
