@@ -4,7 +4,6 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:my_budget_app/components/containers/base_container.dart';
 import 'package:my_budget_app/components/containers/default_container.dart';
 import 'package:my_budget_app/screens/scanner_screen.dart';
-import 'package:my_budget_app/screens/homepage_screen.dart';
 import 'package:my_budget_app/screens/income_screen.dart';
 import 'package:my_budget_app/services/api_service.dart';
 import 'package:my_budget_app/services/secure_storage_service.dart';
@@ -23,7 +22,8 @@ Future<void> main() async {
 }
 
 // App entry point - Handles authentication state
-class App extends StatelessWidget {
+class App extends StatelessWidget
+{
   const App({Key? key}) : super(key: key);
 
   @override
@@ -31,6 +31,7 @@ class App extends StatelessWidget {
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: MaterialApp(
+        theme: ThemeData(fontFamily: 'Metropolis Regular'),
         debugShowCheckedModeBanner: false,
         home: const DefaultContainer(),
         routes: {
