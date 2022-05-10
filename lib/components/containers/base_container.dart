@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_budget_app/resources/colors.dart';
 import 'package:my_budget_app/screens/homepage_screen.dart';
 import 'package:my_budget_app/screens/profile_screen.dart';
 import 'package:my_budget_app/widgets/bottom_modal_widget.dart';
@@ -17,7 +18,7 @@ class _BaseContainerState extends State<BaseContainer> {
     setState(() { _currentIndex = index; });
   }
 
-  static const List<Widget> _screens = <Widget>[ HomepageScreen(), ProfileScreen() ];
+  static const List<Widget> _screens = <Widget>[ HomepageScreen(), ProfileScreen(), ProfileScreen(), ProfileScreen() ];
 
   @override
   Widget build(BuildContext context) {
@@ -36,12 +37,17 @@ class _BaseContainerState extends State<BaseContainer> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
       bottomNavigationBar: BottomNavigationBar(
-        fixedColor: Colors.blue,
+        fixedColor: AppColor.PRIMARY,
         unselectedItemColor: Colors.grey,
+        unselectedLabelStyle: const TextStyle(fontFamily: 'Metropolis Regular'),
+        selectedLabelStyle: const TextStyle(fontFamily: 'Metropolis Regular'),
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        iconSize: 26,
         items: const [
           BottomNavigationBarItem(label: 'Accueil', icon: Icon(Icons.home)),
-          // BottomNavigationBarItem(label: 'Opérations', icon: Icon(Icons.euro)),
-          // BottomNavigationBarItem(label: 'Statistiques', icon: Icon(Icons.analytics_outlined)),
+          BottomNavigationBarItem(label: 'Opérations', icon: Icon(Icons.euro)),
+          BottomNavigationBarItem(label: 'Statistiques', icon: Icon(Icons.analytics_outlined)),
           BottomNavigationBarItem(label: 'Profil', icon: Icon(Icons.account_circle_rounded)),
         ],
         onTap: _onItemTap,
