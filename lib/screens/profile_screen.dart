@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_budget_app/components/text/title.dart';
 import 'package:my_budget_app/services/secure_storage_service.dart';
 import 'package:provider/provider.dart';
 import 'auth/login_screen.dart';
@@ -10,7 +11,7 @@ class ProfileScreen extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     return Column(children: [
-      const Text('Profile Screen'),
+      const WidgetTitle(text: 'Mon profil', padding: 0),
       ElevatedButton(
           onPressed: () async {
             var secureService = context.read<SecureStorage>.call();

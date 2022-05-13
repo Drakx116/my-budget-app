@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:my_budget_app/components/containers/base_container.dart';
 import 'package:my_budget_app/components/snackbar.dart';
+import 'package:my_budget_app/components/text/title.dart';
 import 'package:my_budget_app/constants/enums/operation_type.dart';
 import 'package:my_budget_app/constants/enums/payment_method_enum.dart';
 import 'package:my_budget_app/constants/snackbar_status_constants.dart' as level;
@@ -67,7 +68,7 @@ class _OperationScreenState extends State<OperationScreen> {
         children: [
           const Padding(
             padding: EdgeInsets.all(16),
-            child: Text('Nouvelle opération')
+            child: WidgetTitle(text: 'Nouvelle opération', padding: 0)
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),

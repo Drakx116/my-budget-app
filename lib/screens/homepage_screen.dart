@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_budget_app/components/text/title.dart';
 
 class HomepageScreen extends StatelessWidget {
   const HomepageScreen({Key? key}) : super(key: key);
@@ -9,7 +10,7 @@ class HomepageScreen extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: const <Widget>[
-        Text('Bienvenue à bord !'),
+        WidgetTitle(text: 'Mon budget', padding: 0),
       ],
     );
   }

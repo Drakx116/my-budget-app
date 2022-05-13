@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:my_budget_app/resources/colors.dart';
 import 'package:my_budget_app/screens/homepage_screen.dart';
+import 'package:my_budget_app/screens/list_operation_screen.dart';
+import 'package:my_budget_app/screens/daily_screen.dart';
 import 'package:my_budget_app/screens/profile_screen.dart';
 import 'package:my_budget_app/widgets/bottom_modal_widget.dart';
 
@@ -18,13 +20,18 @@ class _BaseContainerState extends State<BaseContainer> {
     setState(() { _currentIndex = index; });
   }
 
-  static const List<Widget> _screens = <Widget>[ HomepageScreen(), ProfileScreen(), ProfileScreen(), ProfileScreen() ];
+  static const List<Widget> _screens = <Widget>[ 
+    HomepageScreen(), OperationListScreen(), DailyScreen(), ProfileScreen()
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: SingleChildScrollView(child: _screens.elementAt(_currentIndex)),
+        child: SingleChildScrollView(child: Padding(
+          padding: const EdgeInsets.all(8),
+          child: _screens.elementAt(_currentIndex),
+        )),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {

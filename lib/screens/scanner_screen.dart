@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:learning_input_image/learning_input_image.dart';
 import 'package:learning_text_recognition/learning_text_recognition.dart';
 import 'package:my_budget_app/components/text/divider.dart';
+import 'package:my_budget_app/components/text/title.dart';
 import 'package:my_budget_app/constants/enums/operation_type.dart';
 import 'package:my_budget_app/screens/operation_screen.dart';
 import 'package:my_budget_app/widgets/scanner_widget.dart';
@@ -44,15 +45,12 @@ class _ScannerScreenState extends State<ScannerScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.all(16),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: const [
-                  Text('Scanner ou saisir un montant'),
-                ],
+            Row(children: const [
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 8),
+                child: WidgetTitle(text: 'Choix du montant'),
               )
-            ),
+            ]),
             ScannerWidget(
               onImage: (InputImage image) async {
                 TextRecognition textRecognition = TextRecognition();
@@ -89,7 +87,6 @@ class _ScannerScreenState extends State<ScannerScreen> {
                     controller: _controller,
                     keyboardType: TextInputType.number,
                     autofocus: false,
-                    
                     decoration: const InputDecoration(
                       labelText: 'Montant de la dépense',
                       suffixIcon: Icon(Icons.euro)
