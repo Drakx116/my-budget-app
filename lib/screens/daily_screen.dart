@@ -10,7 +10,7 @@ class DailyScreen extends StatelessWidget
   Widget build(BuildContext context) {
     return Column(
       children: const [
-        WidgetTitle(text: 'Mon quotidien', padding: 0)
+        WidgetTitle(text: 'Mon quotidien')
       ],
     );
   }

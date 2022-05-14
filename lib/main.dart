@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:my_budget_app/components/containers/base_container.dart';
 import 'package:my_budget_app/components/containers/default_container.dart';
+import 'package:my_budget_app/resources/colors.dart';
 import 'package:my_budget_app/screens/scanner_screen.dart';
 import 'package:my_budget_app/screens/income_screen.dart';
 import 'package:my_budget_app/services/api_service.dart';
@@ -31,7 +32,10 @@ class App extends StatelessWidget
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: MaterialApp(
-        theme: ThemeData(fontFamily: 'Metropolis Regular'),
+        theme: ThemeData(
+          fontFamily: 'Metropolis Regular',
+          colorScheme: const ColorScheme.light(background: AppColor.PRIMARY)
+        ),
         debugShowCheckedModeBanner: false,
         home: const DefaultContainer(),
         routes: {

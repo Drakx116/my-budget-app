@@ -46,7 +46,7 @@ class _BaseContainerState extends State<BaseContainer> {
         onPressed: () {
           showModalBottomSheet(context: context, builder: (BuildContext context) => const BottomModal());
         },
-        child: const Icon(Icons.add),
+        child: const Icon(Icons.add, color: AppColor.LIGHT),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
       bottomNavigationBar: BottomNavigationBar(

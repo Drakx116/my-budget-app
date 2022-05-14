@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:my_budget_app/components/text/paragraph.dart';
 import 'package:my_budget_app/constants/enums/operation_type.dart';
-import 'package:my_budget_app/screens/income_screen.dart';
+import 'package:my_budget_app/resources/colors.dart';
 import 'package:my_budget_app/screens/operation_screen.dart';
 
 class BottomModal extends StatelessWidget
@@ -10,27 +11,27 @@ class BottomModal extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 300,
+      height: 200,
       child: Center(
         child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.only(top: 16, right: 16, left: 16),
+              padding: const EdgeInsets.only(top: 8, right: 16, left: 16),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text('Actions rapides'),
-                  ElevatedButton(
+                  const WidgetParagraph(text: 'Actions rapides'),
+                  TextButton(
                     onPressed: () { Navigator.pop(context); },
-                    child: const Text('Fermer')
+                    child: const Text('Fermer', style: TextStyle(color: AppColor.DARK)),
                   )
                 ],
               ),
             ),
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.all(16),
+                padding: const EdgeInsets.only(top: 8, right: 16, left: 16, bottom: 16),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
@@ -39,13 +40,19 @@ class BottomModal extends StatelessWidget
                         padding: const EdgeInsets.only(right: 8),
                         child: GestureDetector(
                           child: Container(
-                            // alignment: Alignment.center,
-                            decoration: const BoxDecoration(color: Colors.blue),
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                  color: AppColor.QUATERNARY
+                              ),
+                            ),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: const [
-                                Text('Créditer', style: TextStyle(color: Colors.white))
+                                Text('Créditer', style: TextStyle(
+                                  color: AppColor.QUATERNARY,
+                                  fontSize: 18
+                                ))
                               ],
                             )
                           ),
@@ -63,8 +70,15 @@ class BottomModal extends StatelessWidget
                         child: GestureDetector(
                           child: Container(
                             alignment: Alignment.center,
-                            decoration: const BoxDecoration(color: Colors.blue),
-                            child: const Text('Dépenser', style: TextStyle(color: Colors.white))
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color: AppColor.SECONDARY
+                              )
+                            ),
+                            child: const Text('Dépenser', style: TextStyle(
+                              color: AppColor.SECONDARY,
+                              fontSize: 18
+                            ))
                           ),
                           onTap: () {
                             Navigator.popAndPushNamed(context, 'expense');

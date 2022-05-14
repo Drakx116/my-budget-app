@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:learning_input_image/learning_input_image.dart';
+import 'package:my_budget_app/resources/colors.dart';
 import 'package:my_budget_app/screens/scanner_screen.dart';
 
 enum CameraType { front, rear }
@@ -108,7 +109,7 @@ class _ScannerWidgetState extends State<ScannerWidget> {
       child: Image.asset(
         'assets/images/scan.png',
         width: MediaQuery.of(context).size.width - 256,
-        color: Colors.blue,
+        color: AppColor.PRIMARY,
       ),
     ),
     onTap: _takePhoto,

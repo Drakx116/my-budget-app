@@ -6,6 +6,7 @@ import 'package:learning_text_recognition/learning_text_recognition.dart';
 import 'package:my_budget_app/components/text/divider.dart';
 import 'package:my_budget_app/components/text/title.dart';
 import 'package:my_budget_app/constants/enums/operation_type.dart';
+import 'package:my_budget_app/resources/colors.dart';
 import 'package:my_budget_app/screens/operation_screen.dart';
 import 'package:my_budget_app/widgets/scanner_widget.dart';
 
@@ -41,6 +42,7 @@ class _ScannerScreenState extends State<ScannerScreen> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
+        backgroundColor: AppColor.PRIMARY,
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -89,7 +91,7 @@ class _ScannerScreenState extends State<ScannerScreen> {
                     autofocus: false,
                     decoration: const InputDecoration(
                       labelText: 'Montant de la dépense',
-                      suffixIcon: Icon(Icons.euro)
+                      labelStyle: TextStyle(color: AppColor.PRIMARY),
                     ),
                     inputFormatters: [
                       FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d{0,2}')),

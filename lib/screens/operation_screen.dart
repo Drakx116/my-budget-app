@@ -7,6 +7,7 @@ import 'package:my_budget_app/constants/enums/operation_type.dart';
 import 'package:my_budget_app/constants/enums/payment_method_enum.dart';
 import 'package:my_budget_app/constants/snackbar_status_constants.dart' as level;
 import 'package:my_budget_app/models/api/requests/user_operation.dart';
+import 'package:my_budget_app/resources/colors.dart';
 import 'package:my_budget_app/services/api_service.dart';
 import 'package:provider/provider.dart';
 
@@ -47,6 +48,7 @@ class _OperationScreenState extends State<OperationScreen> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
+        backgroundColor: AppColor.PRIMARY,
         actions: [
           PopupMenuButton(itemBuilder: (BuildContext context) {
             return [
@@ -67,8 +69,8 @@ class _OperationScreenState extends State<OperationScreen> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           const Padding(
-            padding: EdgeInsets.all(16),
-            child: WidgetTitle(text: 'Nouvelle opération', padding: 0)
+            padding: EdgeInsets.only(top: 16, right: 8, left: 8),
+            child: WidgetTitle(text: 'Nouvelle opération'),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),

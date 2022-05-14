@@ -8,7 +8,7 @@ class OperationListScreen extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     return Column(children: const [
-      WidgetTitle(text: 'Mes opérations', padding: 0)
+      WidgetTitle(text: 'Mes opérations')
     ]);
   }
 }

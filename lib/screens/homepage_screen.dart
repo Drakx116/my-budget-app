@@ -64,7 +64,7 @@ class HomepageScreen extends StatelessWidget {
                 child: Text('Toutes mes opérations', style: TextStyle(color: AppColor.LIGHT, fontSize: 16)),
               ),
               style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(AppColor.PRIMARY),
+                backgroundColor: MaterialStateProperty.all(AppColor.DARK),
                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                   RoundedRectangleBorder(borderRadius: BorderRadius.circular(4))
                 )
