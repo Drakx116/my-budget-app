@@ -75,6 +75,11 @@ class _OperationScreenState extends State<OperationScreen> {
             child: Form(
               child: Column(
                 children: [
+                  const SizedBox(height: 16),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: const [ Text('Type') ],
+                  ),
                   DropdownButton(
                     isExpanded: true,
                     value: widget.type.value,
@@ -83,7 +88,11 @@ class _OperationScreenState extends State<OperationScreen> {
                     },
                     items: OperationType.values.map((OperationType type) => DropdownMenuItem(child: Text(type.value), value: type.value)).toList(),
                   ),
-                  const SizedBox(height: 16),
+                  const SizedBox(height: 24),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: const [ Text('Méthode de paiement') ],
+                  ),
                   DropdownButton(
                     isExpanded: true,
                     value: widget.paymentMethod.value,
