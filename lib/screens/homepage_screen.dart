@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:my_budget_app/components/containers/base_container.dart';
 import 'package:my_budget_app/components/text/title.dart';
 import 'package:my_budget_app/resources/colors.dart';
-import 'package:my_budget_app/screens/list_operation_screen.dart';
 import 'package:my_budget_app/widgets/operations/operation_list_view.dart';
+import 'package:my_budget_app/widgets/single_value_tile.dart';
 
 class HomepageScreen extends StatelessWidget {
   const HomepageScreen({Key? key}) : super(key: key);
@@ -15,14 +15,41 @@ class HomepageScreen extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
         Row(children: const [
-          WidgetTitle(text: 'Mon budget', padding: 0),
+          WidgetTitle(text: 'Mon budget'),
         ]),
-        const SizedBox(height: 32),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 16),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 4),
+                  child: SingleValueTile(
+                    label: 'Total des rentrées',
+                    value: '121.69€',
+                    backgroundColor: AppColor.QUATERNARY,
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 4),
+                  child: SingleValueTile(
+                    label: 'Total des dépenses',
+                    value: '96.64€',
+                    backgroundColor: AppColor.SECONDARY,
+                  ),
+                ),
+              )
+            ],
+          ),
+        ),
         Row(children: const [
-          WidgetTitle(text: 'Mes dernières opérations', padding: 0),
+          WidgetTitle(text: 'Mes dernières opérations'),
         ]),
         const Padding(
-          padding: EdgeInsets.symmetric(vertical: 16),
+          padding: EdgeInsets.only(bottom: 16),
           child: OperationListWidget(),
         ),
         Row(
