@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:my_budget_app/models/api/requests/user_login.dart';
@@ -45,6 +46,18 @@ class APIService
         '$apiUri/operations/create',
         options: Options(headers: { 'Authorization' : 'Bearer ' + token }),
         data: operation.toJson()
+    );
+  }
+
+  Future getLastOperations({ int limit = 0 }) async {
+    var token = await _getToken();
+    if (null == token) {
+      return;
+    }
+
+    return await dio.get(
+      '$apiUri/operations?limit=' + limit.toString(),
+      options: Options(headers: { 'Authorization' : 'Bearer ' + token })
     );
   }
 

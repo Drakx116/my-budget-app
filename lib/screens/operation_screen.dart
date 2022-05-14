@@ -25,7 +25,7 @@ class OperationScreen extends StatefulWidget
 
   OperationScreen({Key? key, required this.type, String? amount }) : super(key: key) {
     price = amount ?? '0';
-    paymentMethod = PaymentMethodType.creditCard;
+    paymentMethod = PaymentMethodType.credit_card;
   }
 
   @override
