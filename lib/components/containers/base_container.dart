@@ -7,7 +7,9 @@ import 'package:my_budget_app/screens/profile_screen.dart';
 import 'package:my_budget_app/widgets/bottom_modal_widget.dart';
 
 class BaseContainer extends StatefulWidget {
-  const BaseContainer({Key? key}) : super(key: key);
+  final int givenIndex;
+
+  const BaseContainer({Key? key, this.givenIndex = 0 }) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _BaseContainerState();
@@ -15,6 +17,12 @@ class BaseContainer extends StatefulWidget {
 
 class _BaseContainerState extends State<BaseContainer> {
   int _currentIndex = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _currentIndex = widget.givenIndex;
+  }
 
   void _onItemTap(int index) {
     setState(() { _currentIndex = index; });
@@ -34,11 +42,9 @@ class _BaseContainerState extends State<BaseContainer> {
         )),
       ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: AppColor.PRIMARY,
         onPressed: () {
-          showModalBottomSheet(
-            context: context,
-            builder: (BuildContext context) => const BottomModal()
-          );
+          showModalBottomSheet(context: context, builder: (BuildContext context) => const BottomModal());
         },
         child: const Icon(Icons.add),
       ),
