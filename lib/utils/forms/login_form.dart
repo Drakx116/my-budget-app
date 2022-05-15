@@ -56,7 +56,7 @@ class _LoginFormState extends State<LoginForm>
             child: ElevatedButton(
               onPressed: () async {
                 try {
-                  if (!(emailField.isValid() && passwordField.isValid())) {
+                  if (!(emailField.isValid() && passwordField.getValue()!.isNotEmpty)) {
                     return;
                   }
 
