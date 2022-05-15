@@ -5,6 +5,7 @@ import 'package:my_budget_app/constants/enums/payment_method_enum.dart';
 import 'package:my_budget_app/models/api/responses/lists/operation_list_model.dart';
 import 'package:my_budget_app/models/api/responses/operation_model.dart';
 import 'package:my_budget_app/resources/colors.dart';
+import 'package:my_budget_app/screens/auth/login_screen.dart';
 import 'package:my_budget_app/services/api_service.dart';
 import 'package:provider/provider.dart';
 
@@ -22,7 +23,17 @@ class OperationListWidget extends StatelessWidget
           future: api.getLastOperations(limit: 5),
           builder: (context, AsyncSnapshot snapshot) {
             if (ConnectionState.done == snapshot.connectionState) {
-              var operationResponse = snapshot.data as Response;
+              var operationResponse = snapshot.data as Response?;
+              if (operationResponse == null) {
+                WidgetsBinding.instance?.addPostFrameCallback((_){
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => const LoginScreen())
+                  );
+                });
+
+                return Container();
+              }
+
               var decodedOperations = Map.fromIterable(operationResponse.data as List, key: (e) => OperationModel.fromJson(e));
 
               List<OperationModel> operationList = [];
@@ -65,7 +76,7 @@ class OperationListWidget extends StatelessWidget
                 }
               );
             } else {
-              return const Center(child: CircularProgressIndicator(),);
+              return const Center(child: CircularProgressIndicator());
             }
           }
         )
