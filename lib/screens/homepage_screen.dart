@@ -18,7 +18,7 @@ class HomepageScreen extends StatelessWidget {
           WidgetTitle(text: 'Mon budget'),
         ]),
         Padding(
-          padding: const EdgeInsets.symmetric(vertical: 16),
+          padding: const EdgeInsets.symmetric(vertical: 8),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -49,7 +49,7 @@ class HomepageScreen extends StatelessWidget {
           WidgetTitle(text: 'Mes dernières opérations'),
         ]),
         const Padding(
-          padding: EdgeInsets.only(bottom: 16),
+          padding: EdgeInsets.only(top:8, bottom: 16),
           child: OperationListWidget(),
         ),
         Row(
@@ -60,11 +60,11 @@ class HomepageScreen extends StatelessWidget {
                 Navigator.of(context).push(MaterialPageRoute(builder: (context) => const BaseContainer(givenIndex: 1)));
               },
               child: const Padding(
-                padding: EdgeInsets.all(16),
-                child: Text('Toutes mes opérations', style: TextStyle(color: AppColor.LIGHT, fontSize: 16)),
+                padding: EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+                child: Text('Voir tout', style: TextStyle(color: AppColor.LIGHT, fontSize: 16)),
               ),
               style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(AppColor.DARK),
+                backgroundColor: MaterialStateProperty.all(AppColor.PRIMARY),
                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                   RoundedRectangleBorder(borderRadius: BorderRadius.circular(4))
                 )

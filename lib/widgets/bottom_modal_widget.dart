@@ -40,17 +40,13 @@ class BottomModal extends StatelessWidget
                         padding: const EdgeInsets.only(right: 8),
                         child: GestureDetector(
                           child: Container(
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                  color: AppColor.QUATERNARY
-                              ),
-                            ),
+                            decoration: const BoxDecoration(color: AppColor.QUATERNARY),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: const [
                                 Text('Créditer', style: TextStyle(
-                                  color: AppColor.QUATERNARY,
+                                  color: AppColor.LIGHT,
                                   fontSize: 18
                                 ))
                               ],
@@ -70,13 +66,9 @@ class BottomModal extends StatelessWidget
                         child: GestureDetector(
                           child: Container(
                             alignment: Alignment.center,
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                color: AppColor.SECONDARY
-                              )
-                            ),
+                            decoration: const BoxDecoration(color: AppColor.SECONDARY),
                             child: const Text('Dépenser', style: TextStyle(
-                              color: AppColor.SECONDARY,
+                              color: AppColor.LIGHT,
                               fontSize: 18
                             ))
                           ),
