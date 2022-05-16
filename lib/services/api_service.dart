@@ -49,6 +49,18 @@ class APIService
     );
   }
 
+  Future getOperationSummary() async {
+    var token = await _getToken();
+    if (null == token) {
+      return;
+    }
+    
+    return await dio.get(
+      '$apiUri/operations/summary',
+      options: Options(headers: { 'Authorization' : 'Bearer ' + token }),
+    );
+  }
+
   Future getLastOperations({ int limit = 0 }) async {
     var token = await _getToken();
 

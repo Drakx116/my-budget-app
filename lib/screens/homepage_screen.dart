@@ -3,6 +3,7 @@ import 'package:my_budget_app/components/containers/base_container.dart';
 import 'package:my_budget_app/components/text/title.dart';
 import 'package:my_budget_app/resources/colors.dart';
 import 'package:my_budget_app/widgets/operations/operation_list_view.dart';
+import 'package:my_budget_app/widgets/operations/operations_summary_widget.dart';
 import 'package:my_budget_app/widgets/single_value_tile.dart';
 
 class HomepageScreen extends StatelessWidget {
@@ -17,34 +18,7 @@ class HomepageScreen extends StatelessWidget {
         Row(children: const [
           WidgetTitle(text: 'Mon budget'),
         ]),
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 8),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.only(right: 4),
-                  child: SingleValueTile(
-                    label: 'Total des rentrées',
-                    value: '121.69€',
-                    backgroundColor: AppColor.QUATERNARY,
-                  ),
-                ),
-              ),
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 4),
-                  child: SingleValueTile(
-                    label: 'Total des dépenses',
-                    value: '96.64€',
-                    backgroundColor: AppColor.SECONDARY,
-                  ),
-                ),
-              )
-            ],
-          ),
-        ),
+        const OperationSummaryWidget(),
         Row(children: const [
           WidgetTitle(text: 'Mes dernières opérations'),
         ]),
