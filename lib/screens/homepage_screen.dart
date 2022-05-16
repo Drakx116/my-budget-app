@@ -24,7 +24,7 @@ class HomepageScreen extends StatelessWidget {
         ]),
         const Padding(
           padding: EdgeInsets.only(top:8, bottom: 16),
-          child: OperationListWidget(),
+          child: OperationListWidget(limit: 5),
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
