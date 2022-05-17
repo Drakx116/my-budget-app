@@ -70,6 +70,15 @@ class APIService
     );
   }
 
+  Future getAccount() async {
+    var token = await _getToken();
+
+    return await dio.get(
+      '$apiUri/account',
+      options: Options(headers: { 'Authorization' : 'Bearer ' + token! })
+    );
+  }
+
   Future<String?> _getToken() async {
     var response = await storage.get('token');
     return response!.value;
