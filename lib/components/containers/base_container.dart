@@ -37,7 +37,7 @@ class _BaseContainerState extends State<BaseContainer> {
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(child: Padding(
-          padding: const EdgeInsets.all(8),
+          padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
           child: _screens.elementAt(_currentIndex),
         )),
       ),

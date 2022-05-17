@@ -44,8 +44,9 @@ class OperationListWidget extends StatelessWidget
               List<OperationModel> operations = OperationListModel(results: operationList).results;
 
               return ListView.builder(
-                scrollDirection: Axis.vertical,
                 shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                scrollDirection: Axis.vertical,
                 itemCount: operations.length,
                 itemBuilder: (BuildContext context, index) {
                   OperationType type = OperationType.values.firstWhere((element) => element.toString() == 'OperationType.' + operations[index].type);

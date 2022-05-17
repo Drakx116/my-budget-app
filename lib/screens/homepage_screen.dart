@@ -4,7 +4,6 @@ import 'package:my_budget_app/components/text/title.dart';
 import 'package:my_budget_app/resources/colors.dart';
 import 'package:my_budget_app/widgets/operations/operation_list_view.dart';
 import 'package:my_budget_app/widgets/operations/operations_summary_widget.dart';
-import 'package:my_budget_app/widgets/single_value_tile.dart';
 
 class HomepageScreen extends StatelessWidget {
   const HomepageScreen({Key? key}) : super(key: key);
@@ -19,13 +18,12 @@ class HomepageScreen extends StatelessWidget {
           WidgetTitle(text: 'Mon budget'),
         ]),
         const OperationSummaryWidget(),
+        const SizedBox(height: 16),
         Row(children: const [
-          WidgetTitle(text: 'Mes dernières opérations'),
+          WidgetTitle(text: 'Mes dernières opérations', padding: 0),
         ]),
-        const Padding(
-          padding: EdgeInsets.only(top:8, bottom: 16),
-          child: OperationListWidget(limit: 5),
-        ),
+        const SizedBox(height: 8),
+        const OperationListWidget(limit: 5),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
