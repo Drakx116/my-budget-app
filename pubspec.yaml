@@ -89,3 +89,8 @@ flutter:
     - family: Metropolis Regular
       fonts:
         - asset: assets/fonts/metropolis-regular.otf
+
+flutter_icons:
+  image_path: "assets/images/icon.png"
+  android: true
+  ios: true
