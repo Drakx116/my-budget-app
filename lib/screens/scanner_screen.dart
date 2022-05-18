@@ -36,7 +36,7 @@ class _ScannerScreenState extends State<ScannerScreen> {
   @override
   Widget build(BuildContext context) {
     _controller
-      ..text = (widget.price != null ? widget.price.toString() : '0')
+      ..text = (widget.price != null ? widget.price.toString() : '')
       ..selection = TextSelection.fromPosition(TextPosition(offset: _controller.text.length));
     
     return Scaffold(
