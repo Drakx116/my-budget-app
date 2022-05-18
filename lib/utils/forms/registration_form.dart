@@ -60,7 +60,7 @@ class _RegistrationFormState extends State<RegistrationForm>
           passwordField,
           confirmPasswordField,
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 16),
+            padding: const EdgeInsets.only(top: 16),
             child: ElevatedButton(
                 onPressed: () async {
                   try {

@@ -52,7 +52,7 @@ class _LoginFormState extends State<LoginForm>
           emailField,
           passwordField,
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 16),
+            padding: const EdgeInsets.only(top: 16),
             child: ElevatedButton(
               onPressed: () async {
                 try {

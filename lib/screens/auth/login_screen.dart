@@ -16,7 +16,7 @@ class LoginScreen extends StatelessWidget
     return CenterContainer(widgets: [
       const WidgetTitle(text: 'Connexion'),
       LoginForm(givenEmail: givenEmail),
-      const ExtendedDivider(orDivider: true, padding: 64),
+      const ExtendedDivider(orDivider: true, padding: 32),
 
       Column(
         children: [

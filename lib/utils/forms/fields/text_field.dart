@@ -62,17 +62,18 @@ class _ExtendedFormTextFieldState extends State<ExtendedFormTextField>
       child: TextFormField(
         obscureText: (widget.type.contains('PASSWORD')),
         decoration: InputDecoration(
-            border: const OutlineInputBorder(),
-            labelText: widget.label,
-            errorText: widget._error,
-            icon: IconButton(
-              icon: Icon(buildIcon()),
-              onPressed: () async {
-                if (field_type.BIRTHDATE == widget.type) {
-                  await handleDateSelection(widget, context);
-                }
-              },
-            )
+          border: const OutlineInputBorder(),
+          contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+          labelText: widget.label,
+          errorText: widget._error,
+          prefixIcon: IconButton(
+            icon: Icon(buildIcon()),
+            onPressed: () async {
+              if (field_type.BIRTHDATE == widget.type) {
+                await handleDateSelection(widget, context);
+              }
+            },
+          )
         ),
         onChanged: (input) {
           setState(() {

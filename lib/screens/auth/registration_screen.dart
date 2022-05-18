@@ -14,7 +14,7 @@ class RegistrationScreen extends StatelessWidget
     return CenterContainer(widgets: [
       const WidgetTitle(text: 'Inscription'),
       const RegistrationForm(),
-      const ExtendedDivider(orDivider: true, padding: 64),
+      const ExtendedDivider(orDivider: true, padding: 32),
 
       Column(
         children: [
