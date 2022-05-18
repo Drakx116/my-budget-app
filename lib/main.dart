@@ -34,7 +34,10 @@ class App extends StatelessWidget
       child: MaterialApp(
         theme: ThemeData(
           fontFamily: 'Metropolis Regular',
-          colorScheme: const ColorScheme.light(background: AppColor.PRIMARY)
+          colorScheme: const ColorScheme.light(background: AppColor.PRIMARY),
+        ).copyWith(
+          colorScheme: ThemeData().colorScheme.copyWith(primary: AppColor.PRIMARY),
+          errorColor: AppColor.SECONDARY,
         ),
         debugShowCheckedModeBanner: false,
         home: const DefaultContainer(),
