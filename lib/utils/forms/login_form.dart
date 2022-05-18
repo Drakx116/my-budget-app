@@ -4,6 +4,7 @@ import 'package:my_budget_app/components/snackbar.dart';
 import 'package:my_budget_app/constants/form_field_constants.dart' as field_type;
 import 'package:my_budget_app/constants/snackbar_status_constants.dart' as level;
 import 'package:my_budget_app/models/api/requests/user_login.dart';
+import 'package:my_budget_app/resources/colors.dart';
 import 'package:my_budget_app/services/api_service.dart';
 import 'package:my_budget_app/services/secure_storage_service.dart';
 import 'package:my_budget_app/utils/forms/fields/text_field.dart';
@@ -88,7 +89,10 @@ class _LoginFormState extends State<LoginForm>
                   return;
                 }
               },
-              child: const Text('Se connecter')
+              child: const Text('Se connecter'),
+              style: ButtonStyle(
+                padding: MaterialStateProperty.all<EdgeInsets>(const EdgeInsets.symmetric(vertical: 8, horizontal: 24))
+              ),
             ),
           )
         ],

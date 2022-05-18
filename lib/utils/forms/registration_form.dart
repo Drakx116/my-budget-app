@@ -3,6 +3,7 @@ import 'package:my_budget_app/components/snackbar.dart';
 import 'package:my_budget_app/constants/form_field_constants.dart' as field_type;
 import 'package:my_budget_app/constants/snackbar_status_constants.dart' as level;
 import 'package:my_budget_app/models/api/requests/user_register.dart';
+import 'package:my_budget_app/resources/colors.dart';
 import 'package:my_budget_app/screens/auth/login_screen.dart';
 import 'package:my_budget_app/services/api_service.dart';
 import 'package:my_budget_app/utils/forms/fields/text_field.dart';
@@ -62,57 +63,59 @@ class _RegistrationFormState extends State<RegistrationForm>
           Padding(
             padding: const EdgeInsets.only(top: 16),
             child: ElevatedButton(
-                onPressed: () async {
-                  try {
-                    if (!(
-                      firstNameField.isValid() &&
-                      lastNameField.isValid() &&
-                      birthDateField.isValid() &&
-                      emailField.isValid() &&
-                      passwordField.isValid() &&
-                      confirmPasswordField.isValid()
-                    )) {
-                      return;
-                    }
-
-                    if (passwordField.getValue() != confirmPasswordField.getValue()) {
-                      const ExtendedSnackBar(
-                        content: 'Les mots de passe saisis sont différents.',
-                        status: level.WARNING,
-                      ).show(context);
-                    }
-
-                    var api = context.read<APIService>.call();
-
-                    var user = UserRegisterModel.fromJson({
-                      'firstName': firstNameField.getValue(),
-                      'lastName': lastNameField.getValue(),
-                      'birthDate': birthDateField.getValue(),
-                      'email': emailField.getValue(),
-                      'password': passwordField.getValue(),
-                    });
-
-                    try {
-                      // TODO : Handle errors if statusCode >= 300
-                      var response = await api.register(user);
-                    } catch (e) {
-                      print(e);
-                      return;
-                    }
-
-                    const ExtendedSnackBar(
-                      content: 'Le compte a été créé avec succès.',
-                      status: level.SUCCESS,
-                    ).show(context);
-
-                    Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => LoginScreen(givenEmail: user.email)),
-                    );
-                  } catch (e) {
-                    print(e);
+              onPressed: () async {
+                try {
+                  if (!(
+                    firstNameField.isValid() &&
+                    lastNameField.isValid() &&
+                    birthDateField.isValid() &&
+                    emailField.isValid() &&
+                    passwordField.isValid() &&
+                    confirmPasswordField.isValid()
+                  )) {
+                    return;
                   }
-                },
-                child: const Text('S\'inscrire')
+
+                  if (passwordField.getValue() != confirmPasswordField.getValue()) {
+                    const ExtendedSnackBar(
+                      content: 'Les mots de passe saisis sont différents.',
+                      status: level.WARNING,
+                    ).show(context);
+                  }
+
+                  var api = context.read<APIService>.call();
+
+                  var user = UserRegisterModel.fromJson({
+                    'firstName': firstNameField.getValue(),
+                    'lastName': lastNameField.getValue(),
+                    'birthDate': birthDateField.getValue(),
+                    'email': emailField.getValue(),
+                    'password': passwordField.getValue(),
+                  });
+
+                  try {
+                    // TODO : Handle errors if statusCode >= 300
+                    await api.register(user);
+                  } catch (e) {
+                    return;
+                  }
+
+                  const ExtendedSnackBar(
+                    content: 'Le compte a été créé avec succès.',
+                    status: level.SUCCESS,
+                  ).show(context);
+
+                  Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => LoginScreen(givenEmail: user.email)),
+                  );
+                } catch (e) {
+                  print(e);
+                }
+              },
+              child: const Text('S\'inscrire'),
+              style: ButtonStyle(
+                  padding: MaterialStateProperty.all<EdgeInsets>(const EdgeInsets.symmetric(vertical: 8, horizontal: 24))
+              ),
             ),
           )
         ]

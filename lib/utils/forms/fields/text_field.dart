@@ -1,6 +1,7 @@
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:my_budget_app/constants/form_field_constants.dart' as field_type;
+import 'package:my_budget_app/resources/colors.dart';
 import 'package:my_budget_app/utils/forms/validators/validator_factory.dart' as validator_factory;
 
 class ExtendedFormTextField extends StatefulWidget
@@ -66,8 +67,12 @@ class _ExtendedFormTextFieldState extends State<ExtendedFormTextField>
           contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
           labelText: widget.label,
           errorText: widget._error,
+          focusedBorder: const OutlineInputBorder(
+            borderSide: BorderSide(color: AppColor.PRIMARY),
+          ),
           prefixIcon: IconButton(
             icon: Icon(buildIcon()),
+            color: (widget._value == null || widget.isValid()) ? AppColor.PRIMARY : AppColor.SECONDARY,
             onPressed: () async {
               if (field_type.BIRTHDATE == widget.type) {
                 await handleDateSelection(widget, context);
