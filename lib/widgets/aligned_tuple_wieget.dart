@@ -12,12 +12,12 @@ class AlignedTuple extends StatelessWidget
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Row(children: [
-        Expanded(flex: 2,
+        Expanded(flex: 3,
           child: Text(label,
             style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)
           )
         ),
-        Expanded(flex: 4,
+        Expanded(flex: 9,
           child: Text(value,
             style: const TextStyle(fontSize: 16)
           )
