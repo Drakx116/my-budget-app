@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:my_budget_app/components/text/paragraph.dart';
 import 'package:my_budget_app/constants/enums/operation_type.dart';
 import 'package:my_budget_app/constants/enums/payment_method_enum.dart';
 import 'package:my_budget_app/models/api/responses/lists/operation_list_model.dart';
@@ -42,6 +43,16 @@ class OperationListWidget extends StatelessWidget
               decodedOperations.forEach((key, value) => operationList.add(OperationModel.fromJson(value)));
 
               List<OperationModel> operations = OperationListModel(results: operationList).results;
+
+              if (operations.isEmpty) {
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: 8),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: const [ WidgetParagraph(text: 'Aucune opération pour le moment ...') ],
+                  ),
+                );
+              }
 
               return ListView.builder(
                 shrinkWrap: true,

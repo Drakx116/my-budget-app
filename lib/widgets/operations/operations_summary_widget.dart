@@ -20,54 +20,56 @@ class OperationSummaryWidget extends StatelessWidget
     return Column(
       children: [
         FutureBuilder(
-            future: api.getOperationSummary(),
-            builder: (context, AsyncSnapshot snapshot) {
-              if (ConnectionState.done == snapshot.connectionState) {
-                var summaryResponse = snapshot.data as Response?;
-                if (summaryResponse == null) {
-                  WidgetsBinding.instance?.addPostFrameCallback((_){
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => const LoginScreen())
-                    );
-                  });
+          future: api.getOperationSummary(),
+          builder: (context, AsyncSnapshot snapshot) {
+            if (ConnectionState.done == snapshot.connectionState) {
+              var summaryResponse = snapshot.data as Response?;
+              if (summaryResponse == null) {
+                WidgetsBinding.instance?.addPostFrameCallback((_){
+                  Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const LoginScreen())
+                  );
+                });
 
-                  return Container();
-                }
+                return Container();
+              }
 
-                var summary = List.from(summaryResponse.data);
+              var summary = List.from(summaryResponse.data);
+              String expenses = (summary.isNotEmpty) ? summary[0]['total'].toString() : '0';
+              String incomes = (summary.isNotEmpty) ? summary[1]['total'].toString() : '0';
 
-                return Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.only(right: 4),
-                          child: SingleValueTile(
-                            label: 'Total des rentrées',
-                            value: summary[1]['total'].toString() + '€',
-                            backgroundColor: AppColor.QUATERNARY,
-                          ),
+              return Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.only(right: 4),
+                        child: SingleValueTile(
+                          label: 'Total des rentrées',
+                          value: incomes.toString() + '€',
+                          backgroundColor: AppColor.QUATERNARY,
                         ),
                       ),
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 4),
-                          child: SingleValueTile(
-                            label: 'Total des dépenses',
-                            value: summary[0]['total'].toString() + '€',
-                            backgroundColor: AppColor.SECONDARY,
-                          ),
+                    ),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 4),
+                        child: SingleValueTile(
+                          label: 'Total des dépenses',
+                          value: expenses.toString() + '€',
+                          backgroundColor: AppColor.SECONDARY,
                         ),
-                      )
-                    ],
-                  ),
-                );
-              } else {
-                return const Center(child: CircularProgressIndicator());
-              }
+                      ),
+                    )
+                  ],
+                ),
+              );
+            } else {
+              return const Center(child: CircularProgressIndicator());
             }
+          }
         )
       ],
     );
