@@ -29,7 +29,7 @@ class RegistrationScreen extends StatelessWidget
                   MaterialPageRoute(builder: (context) => const LoginScreen()),
                 );
               },
-              child: const Text('Se connecter'),
+              child: const Text('Je me connecte'),
               style: ButtonStyle(
                 padding: MaterialStateProperty.all<EdgeInsets>(const EdgeInsets.symmetric(vertical: 8, horizontal: 24))
               ),

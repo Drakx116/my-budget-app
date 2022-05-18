@@ -112,7 +112,7 @@ class _RegistrationFormState extends State<RegistrationForm>
                   print(e);
                 }
               },
-              child: const Text('S\'inscrire'),
+              child: const Text('Je m\'inscris'),
               style: ButtonStyle(
                   padding: MaterialStateProperty.all<EdgeInsets>(const EdgeInsets.symmetric(vertical: 8, horizontal: 24))
               ),

@@ -15,8 +15,10 @@ class LoginScreen extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     return CenterContainer(widgets: [
-      Image.asset('assets/images/logo.png', width: 200),
-      const WidgetTitle(text: 'Connexion'),
+      Padding(
+        padding: const EdgeInsets.symmetric(vertical: 16),
+        child: Image.asset('assets/images/logo.png', width: 200),
+      ),
       LoginForm(givenEmail: givenEmail),
       const ExtendedDivider(orDivider: true, padding: 32),
 
@@ -32,7 +34,7 @@ class LoginScreen extends StatelessWidget
                   MaterialPageRoute(builder: (context) => const RegistrationScreen()),
                 );
               },
-              child: const Text('S\'inscrire'),
+              child: const Text('Je m\'inscris'),
               style: ButtonStyle(
                 padding: MaterialStateProperty.all<EdgeInsets>(const EdgeInsets.symmetric(vertical: 8, horizontal: 24))
               ),
