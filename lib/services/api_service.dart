@@ -61,11 +61,11 @@ class APIService
     );
   }
 
-  Future getLastOperations({ int limit = 0 }) async {
+  Future getLastOperations({ int limit = 0, String type = 'all' }) async {
     var token = await _getToken();
 
     return await dio.get(
-      '$apiUri/operations?limit=' + limit.toString(),
+      '$apiUri/operations?limit=' + limit.toString() + '&type=' + type,
       options: Options(headers: { 'Authorization' : 'Bearer ' + token! })
     );
   }

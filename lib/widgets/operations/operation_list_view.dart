@@ -13,8 +13,9 @@ import 'package:provider/provider.dart';
 class OperationListWidget extends StatelessWidget
 {
   final int limit;
+  final String type;
 
-  const OperationListWidget({Key? key, this.limit = 0 }) : super(key: key);
+  const OperationListWidget({Key? key, this.limit = 0, this.type = 'all' }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +24,7 @@ class OperationListWidget extends StatelessWidget
     return Column(
       children: [
         FutureBuilder(
-          future: api.getLastOperations(limit: limit),
+          future: api.getLastOperations(limit: limit, type: type),
           builder: (context, AsyncSnapshot snapshot) {
             if (ConnectionState.done == snapshot.connectionState) {
               var operationResponse = snapshot.data as Response?;
