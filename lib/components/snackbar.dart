@@ -22,8 +22,8 @@ class ExtendedSnackBar extends StatelessWidget
     ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-              child: Text(content, style: const TextStyle(fontSize: 16))
+            padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+            child: Text(content, style: const TextStyle(fontSize: 14))
           ),
           behavior: SnackBarBehavior.floating,
           backgroundColor: _getColor(),
