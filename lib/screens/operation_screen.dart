@@ -109,7 +109,7 @@ class _OperationScreenState extends State<OperationScreen> {
                     keyboardType: TextInputType.number,
                     autofocus: false,
                     decoration: const InputDecoration(
-                      labelText: 'Montant de la dépense',
+                      labelText: 'Montant de l\'opération',
                       suffixIcon: Icon(Icons.euro)
                     ),
                     inputFormatters: [
