@@ -9,7 +9,8 @@ class OperationModel with _$OperationModel {
     required String type,
     required num amount,
     required String label,
-    required String method
+    required String method,
+    required String date
   }) = _OperationModel;
 
   factory OperationModel.fromJson(Map<String, dynamic> json) =>

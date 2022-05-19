@@ -12,36 +12,11 @@ part of 'operation_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 OperationModel _$OperationModelFromJson(Map<String, dynamic> json) {
   return _OperationModel.fromJson(json);
 }
-
-/// @nodoc
-class _$OperationModelTearOff {
-  const _$OperationModelTearOff();
-
-  _OperationModel call(
-      {required String type,
-      required num amount,
-      required String label,
-      required String method}) {
-    return _OperationModel(
-      type: type,
-      amount: amount,
-      label: label,
-      method: method,
-    );
-  }
-
-  OperationModel fromJson(Map<String, Object?> json) {
-    return OperationModel.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $OperationModel = _$OperationModelTearOff();
 
 /// @nodoc
 mixin _$OperationModel {
@@ -49,6 +24,7 @@ mixin _$OperationModel {
   num get amount => throw _privateConstructorUsedError;
   String get label => throw _privateConstructorUsedError;
   String get method => throw _privateConstructorUsedError;
+  String get date => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -61,7 +37,8 @@ abstract class $OperationModelCopyWith<$Res> {
   factory $OperationModelCopyWith(
           OperationModel value, $Res Function(OperationModel) then) =
       _$OperationModelCopyWithImpl<$Res>;
-  $Res call({String type, num amount, String label, String method});
+  $Res call(
+      {String type, num amount, String label, String method, String date});
 }
 
 /// @nodoc
@@ -79,6 +56,7 @@ class _$OperationModelCopyWithImpl<$Res>
     Object? amount = freezed,
     Object? label = freezed,
     Object? method = freezed,
+    Object? date = freezed,
   }) {
     return _then(_value.copyWith(
       type: type == freezed
@@ -97,30 +75,35 @@ class _$OperationModelCopyWithImpl<$Res>
           ? _value.method
           : method // ignore: cast_nullable_to_non_nullable
               as String,
+      date: date == freezed
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
 /// @nodoc
-abstract class _$OperationModelCopyWith<$Res>
+abstract class _$$_OperationModelCopyWith<$Res>
     implements $OperationModelCopyWith<$Res> {
-  factory _$OperationModelCopyWith(
-          _OperationModel value, $Res Function(_OperationModel) then) =
-      __$OperationModelCopyWithImpl<$Res>;
+  factory _$$_OperationModelCopyWith(
+          _$_OperationModel value, $Res Function(_$_OperationModel) then) =
+      __$$_OperationModelCopyWithImpl<$Res>;
   @override
-  $Res call({String type, num amount, String label, String method});
+  $Res call(
+      {String type, num amount, String label, String method, String date});
 }
 
 /// @nodoc
-class __$OperationModelCopyWithImpl<$Res>
+class __$$_OperationModelCopyWithImpl<$Res>
     extends _$OperationModelCopyWithImpl<$Res>
-    implements _$OperationModelCopyWith<$Res> {
-  __$OperationModelCopyWithImpl(
-      _OperationModel _value, $Res Function(_OperationModel) _then)
-      : super(_value, (v) => _then(v as _OperationModel));
+    implements _$$_OperationModelCopyWith<$Res> {
+  __$$_OperationModelCopyWithImpl(
+      _$_OperationModel _value, $Res Function(_$_OperationModel) _then)
+      : super(_value, (v) => _then(v as _$_OperationModel));
 
   @override
-  _OperationModel get _value => super._value as _OperationModel;
+  _$_OperationModel get _value => super._value as _$_OperationModel;
 
   @override
   $Res call({
@@ -128,8 +111,9 @@ class __$OperationModelCopyWithImpl<$Res>
     Object? amount = freezed,
     Object? label = freezed,
     Object? method = freezed,
+    Object? date = freezed,
   }) {
-    return _then(_OperationModel(
+    return _then(_$_OperationModel(
       type: type == freezed
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -146,6 +130,10 @@ class __$OperationModelCopyWithImpl<$Res>
           ? _value.method
           : method // ignore: cast_nullable_to_non_nullable
               as String,
+      date: date == freezed
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -157,7 +145,8 @@ class _$_OperationModel implements _OperationModel {
       {required this.type,
       required this.amount,
       required this.label,
-      required this.method});
+      required this.method,
+      required this.date});
 
   factory _$_OperationModel.fromJson(Map<String, dynamic> json) =>
       _$$_OperationModelFromJson(json);
@@ -170,35 +159,40 @@ class _$_OperationModel implements _OperationModel {
   final String label;
   @override
   final String method;
+  @override
+  final String date;
 
   @override
   String toString() {
-    return 'OperationModel(type: $type, amount: $amount, label: $label, method: $method)';
+    return 'OperationModel(type: $type, amount: $amount, label: $label, method: $method, date: $date)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _OperationModel &&
+            other is _$_OperationModel &&
             const DeepCollectionEquality().equals(other.type, type) &&
             const DeepCollectionEquality().equals(other.amount, amount) &&
             const DeepCollectionEquality().equals(other.label, label) &&
-            const DeepCollectionEquality().equals(other.method, method));
+            const DeepCollectionEquality().equals(other.method, method) &&
+            const DeepCollectionEquality().equals(other.date, date));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(type),
       const DeepCollectionEquality().hash(amount),
       const DeepCollectionEquality().hash(label),
-      const DeepCollectionEquality().hash(method));
+      const DeepCollectionEquality().hash(method),
+      const DeepCollectionEquality().hash(date));
 
   @JsonKey(ignore: true)
   @override
-  _$OperationModelCopyWith<_OperationModel> get copyWith =>
-      __$OperationModelCopyWithImpl<_OperationModel>(this, _$identity);
+  _$$_OperationModelCopyWith<_$_OperationModel> get copyWith =>
+      __$$_OperationModelCopyWithImpl<_$_OperationModel>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -208,24 +202,27 @@ class _$_OperationModel implements _OperationModel {
 
 abstract class _OperationModel implements OperationModel {
   const factory _OperationModel(
-      {required String type,
-      required num amount,
-      required String label,
-      required String method}) = _$_OperationModel;
+      {required final String type,
+      required final num amount,
+      required final String label,
+      required final String method,
+      required final String date}) = _$_OperationModel;
 
   factory _OperationModel.fromJson(Map<String, dynamic> json) =
       _$_OperationModel.fromJson;
 
   @override
-  String get type;
+  String get type => throw _privateConstructorUsedError;
   @override
-  num get amount;
+  num get amount => throw _privateConstructorUsedError;
   @override
-  String get label;
+  String get label => throw _privateConstructorUsedError;
   @override
-  String get method;
+  String get method => throw _privateConstructorUsedError;
+  @override
+  String get date => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$OperationModelCopyWith<_OperationModel> get copyWith =>
+  _$$_OperationModelCopyWith<_$_OperationModel> get copyWith =>
       throw _privateConstructorUsedError;
 }

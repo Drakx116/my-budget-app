@@ -73,7 +73,9 @@ class OperationListWidget extends StatelessWidget
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(operations[index].label, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                        Text('Le ' + operations[index].date, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: AppColor.DARK)),
+                        const SizedBox(height: 8),
+                        Text(operations[index].label, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.normal)),
                         Row(children: [
                           Padding(
                             padding: const EdgeInsets.only(top: 8),

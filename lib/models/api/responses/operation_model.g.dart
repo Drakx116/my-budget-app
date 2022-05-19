@@ -12,6 +12,7 @@ _$_OperationModel _$$_OperationModelFromJson(Map<String, dynamic> json) =>
       amount: json['amount'] as num,
       label: json['label'] as String,
       method: json['method'] as String,
+      date: json['date'] as String,
     );
 
 Map<String, dynamic> _$$_OperationModelToJson(_$_OperationModel instance) =>
@@ -20,4 +21,5 @@ Map<String, dynamic> _$$_OperationModelToJson(_$_OperationModel instance) =>
       'amount': instance.amount,
       'label': instance.label,
       'method': instance.method,
+      'date': instance.date,
     };

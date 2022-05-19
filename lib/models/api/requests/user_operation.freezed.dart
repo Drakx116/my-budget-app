@@ -12,36 +12,11 @@ part of 'user_operation.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 UserOperationModel _$UserOperationModelFromJson(Map<String, dynamic> json) {
   return _UserOperationModel.fromJson(json);
 }
-
-/// @nodoc
-class _$UserOperationModelTearOff {
-  const _$UserOperationModelTearOff();
-
-  _UserOperationModel call(
-      {required String type,
-      required String method,
-      required String amount,
-      required String label}) {
-    return _UserOperationModel(
-      type: type,
-      method: method,
-      amount: amount,
-      label: label,
-    );
-  }
-
-  UserOperationModel fromJson(Map<String, Object?> json) {
-    return UserOperationModel.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $UserOperationModel = _$UserOperationModelTearOff();
 
 /// @nodoc
 mixin _$UserOperationModel {
@@ -102,25 +77,25 @@ class _$UserOperationModelCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$UserOperationModelCopyWith<$Res>
+abstract class _$$_UserOperationModelCopyWith<$Res>
     implements $UserOperationModelCopyWith<$Res> {
-  factory _$UserOperationModelCopyWith(
-          _UserOperationModel value, $Res Function(_UserOperationModel) then) =
-      __$UserOperationModelCopyWithImpl<$Res>;
+  factory _$$_UserOperationModelCopyWith(_$_UserOperationModel value,
+          $Res Function(_$_UserOperationModel) then) =
+      __$$_UserOperationModelCopyWithImpl<$Res>;
   @override
   $Res call({String type, String method, String amount, String label});
 }
 
 /// @nodoc
-class __$UserOperationModelCopyWithImpl<$Res>
+class __$$_UserOperationModelCopyWithImpl<$Res>
     extends _$UserOperationModelCopyWithImpl<$Res>
-    implements _$UserOperationModelCopyWith<$Res> {
-  __$UserOperationModelCopyWithImpl(
-      _UserOperationModel _value, $Res Function(_UserOperationModel) _then)
-      : super(_value, (v) => _then(v as _UserOperationModel));
+    implements _$$_UserOperationModelCopyWith<$Res> {
+  __$$_UserOperationModelCopyWithImpl(
+      _$_UserOperationModel _value, $Res Function(_$_UserOperationModel) _then)
+      : super(_value, (v) => _then(v as _$_UserOperationModel));
 
   @override
-  _UserOperationModel get _value => super._value as _UserOperationModel;
+  _$_UserOperationModel get _value => super._value as _$_UserOperationModel;
 
   @override
   $Res call({
@@ -129,7 +104,7 @@ class __$UserOperationModelCopyWithImpl<$Res>
     Object? amount = freezed,
     Object? label = freezed,
   }) {
-    return _then(_UserOperationModel(
+    return _then(_$_UserOperationModel(
       type: type == freezed
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -180,13 +155,14 @@ class _$_UserOperationModel implements _UserOperationModel {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _UserOperationModel &&
+            other is _$_UserOperationModel &&
             const DeepCollectionEquality().equals(other.type, type) &&
             const DeepCollectionEquality().equals(other.method, method) &&
             const DeepCollectionEquality().equals(other.amount, amount) &&
             const DeepCollectionEquality().equals(other.label, label));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -197,8 +173,9 @@ class _$_UserOperationModel implements _UserOperationModel {
 
   @JsonKey(ignore: true)
   @override
-  _$UserOperationModelCopyWith<_UserOperationModel> get copyWith =>
-      __$UserOperationModelCopyWithImpl<_UserOperationModel>(this, _$identity);
+  _$$_UserOperationModelCopyWith<_$_UserOperationModel> get copyWith =>
+      __$$_UserOperationModelCopyWithImpl<_$_UserOperationModel>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -208,24 +185,24 @@ class _$_UserOperationModel implements _UserOperationModel {
 
 abstract class _UserOperationModel implements UserOperationModel {
   const factory _UserOperationModel(
-      {required String type,
-      required String method,
-      required String amount,
-      required String label}) = _$_UserOperationModel;
+      {required final String type,
+      required final String method,
+      required final String amount,
+      required final String label}) = _$_UserOperationModel;
 
   factory _UserOperationModel.fromJson(Map<String, dynamic> json) =
       _$_UserOperationModel.fromJson;
 
   @override
-  String get type;
+  String get type => throw _privateConstructorUsedError;
   @override
-  String get method;
+  String get method => throw _privateConstructorUsedError;
   @override
-  String get amount;
+  String get amount => throw _privateConstructorUsedError;
   @override
-  String get label;
+  String get label => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$UserOperationModelCopyWith<_UserOperationModel> get copyWith =>
+  _$$_UserOperationModelCopyWith<_$_UserOperationModel> get copyWith =>
       throw _privateConstructorUsedError;
 }

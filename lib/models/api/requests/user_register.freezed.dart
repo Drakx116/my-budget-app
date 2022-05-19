@@ -12,38 +12,11 @@ part of 'user_register.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 UserRegisterModel _$UserRegisterModelFromJson(Map<String, dynamic> json) {
   return _UserRegisterModel.fromJson(json);
 }
-
-/// @nodoc
-class _$UserRegisterModelTearOff {
-  const _$UserRegisterModelTearOff();
-
-  _UserRegisterModel call(
-      {required String firstName,
-      required String lastName,
-      required String birthDate,
-      required String email,
-      required String password}) {
-    return _UserRegisterModel(
-      firstName: firstName,
-      lastName: lastName,
-      birthDate: birthDate,
-      email: email,
-      password: password,
-    );
-  }
-
-  UserRegisterModel fromJson(Map<String, Object?> json) {
-    return UserRegisterModel.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $UserRegisterModel = _$UserRegisterModelTearOff();
 
 /// @nodoc
 mixin _$UserRegisterModel {
@@ -115,11 +88,11 @@ class _$UserRegisterModelCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$UserRegisterModelCopyWith<$Res>
+abstract class _$$_UserRegisterModelCopyWith<$Res>
     implements $UserRegisterModelCopyWith<$Res> {
-  factory _$UserRegisterModelCopyWith(
-          _UserRegisterModel value, $Res Function(_UserRegisterModel) then) =
-      __$UserRegisterModelCopyWithImpl<$Res>;
+  factory _$$_UserRegisterModelCopyWith(_$_UserRegisterModel value,
+          $Res Function(_$_UserRegisterModel) then) =
+      __$$_UserRegisterModelCopyWithImpl<$Res>;
   @override
   $Res call(
       {String firstName,
@@ -130,15 +103,15 @@ abstract class _$UserRegisterModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$UserRegisterModelCopyWithImpl<$Res>
+class __$$_UserRegisterModelCopyWithImpl<$Res>
     extends _$UserRegisterModelCopyWithImpl<$Res>
-    implements _$UserRegisterModelCopyWith<$Res> {
-  __$UserRegisterModelCopyWithImpl(
-      _UserRegisterModel _value, $Res Function(_UserRegisterModel) _then)
-      : super(_value, (v) => _then(v as _UserRegisterModel));
+    implements _$$_UserRegisterModelCopyWith<$Res> {
+  __$$_UserRegisterModelCopyWithImpl(
+      _$_UserRegisterModel _value, $Res Function(_$_UserRegisterModel) _then)
+      : super(_value, (v) => _then(v as _$_UserRegisterModel));
 
   @override
-  _UserRegisterModel get _value => super._value as _UserRegisterModel;
+  _$_UserRegisterModel get _value => super._value as _$_UserRegisterModel;
 
   @override
   $Res call({
@@ -148,7 +121,7 @@ class __$UserRegisterModelCopyWithImpl<$Res>
     Object? email = freezed,
     Object? password = freezed,
   }) {
-    return _then(_UserRegisterModel(
+    return _then(_$_UserRegisterModel(
       firstName: firstName == freezed
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
@@ -206,7 +179,7 @@ class _$_UserRegisterModel implements _UserRegisterModel {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _UserRegisterModel &&
+            other is _$_UserRegisterModel &&
             const DeepCollectionEquality().equals(other.firstName, firstName) &&
             const DeepCollectionEquality().equals(other.lastName, lastName) &&
             const DeepCollectionEquality().equals(other.birthDate, birthDate) &&
@@ -214,6 +187,7 @@ class _$_UserRegisterModel implements _UserRegisterModel {
             const DeepCollectionEquality().equals(other.password, password));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -225,8 +199,9 @@ class _$_UserRegisterModel implements _UserRegisterModel {
 
   @JsonKey(ignore: true)
   @override
-  _$UserRegisterModelCopyWith<_UserRegisterModel> get copyWith =>
-      __$UserRegisterModelCopyWithImpl<_UserRegisterModel>(this, _$identity);
+  _$$_UserRegisterModelCopyWith<_$_UserRegisterModel> get copyWith =>
+      __$$_UserRegisterModelCopyWithImpl<_$_UserRegisterModel>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -236,27 +211,27 @@ class _$_UserRegisterModel implements _UserRegisterModel {
 
 abstract class _UserRegisterModel implements UserRegisterModel {
   const factory _UserRegisterModel(
-      {required String firstName,
-      required String lastName,
-      required String birthDate,
-      required String email,
-      required String password}) = _$_UserRegisterModel;
+      {required final String firstName,
+      required final String lastName,
+      required final String birthDate,
+      required final String email,
+      required final String password}) = _$_UserRegisterModel;
 
   factory _UserRegisterModel.fromJson(Map<String, dynamic> json) =
       _$_UserRegisterModel.fromJson;
 
   @override
-  String get firstName;
+  String get firstName => throw _privateConstructorUsedError;
   @override
-  String get lastName;
+  String get lastName => throw _privateConstructorUsedError;
   @override
-  String get birthDate;
+  String get birthDate => throw _privateConstructorUsedError;
   @override
-  String get email;
+  String get email => throw _privateConstructorUsedError;
   @override
-  String get password;
+  String get password => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$UserRegisterModelCopyWith<_UserRegisterModel> get copyWith =>
+  _$$_UserRegisterModelCopyWith<_$_UserRegisterModel> get copyWith =>
       throw _privateConstructorUsedError;
 }

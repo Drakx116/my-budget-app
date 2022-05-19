@@ -12,29 +12,11 @@ part of 'operation_list_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 OperationListModel _$OperationListModelFromJson(Map<String, dynamic> json) {
   return _OperationListModel.fromJson(json);
 }
-
-/// @nodoc
-class _$OperationListModelTearOff {
-  const _$OperationListModelTearOff();
-
-  _OperationListModel call({required List<OperationModel> results}) {
-    return _OperationListModel(
-      results: results,
-    );
-  }
-
-  OperationListModel fromJson(Map<String, Object?> json) {
-    return OperationListModel.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $OperationListModel = _$OperationListModelTearOff();
 
 /// @nodoc
 mixin _$OperationListModel {
@@ -77,33 +59,33 @@ class _$OperationListModelCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$OperationListModelCopyWith<$Res>
+abstract class _$$_OperationListModelCopyWith<$Res>
     implements $OperationListModelCopyWith<$Res> {
-  factory _$OperationListModelCopyWith(
-          _OperationListModel value, $Res Function(_OperationListModel) then) =
-      __$OperationListModelCopyWithImpl<$Res>;
+  factory _$$_OperationListModelCopyWith(_$_OperationListModel value,
+          $Res Function(_$_OperationListModel) then) =
+      __$$_OperationListModelCopyWithImpl<$Res>;
   @override
   $Res call({List<OperationModel> results});
 }
 
 /// @nodoc
-class __$OperationListModelCopyWithImpl<$Res>
+class __$$_OperationListModelCopyWithImpl<$Res>
     extends _$OperationListModelCopyWithImpl<$Res>
-    implements _$OperationListModelCopyWith<$Res> {
-  __$OperationListModelCopyWithImpl(
-      _OperationListModel _value, $Res Function(_OperationListModel) _then)
-      : super(_value, (v) => _then(v as _OperationListModel));
+    implements _$$_OperationListModelCopyWith<$Res> {
+  __$$_OperationListModelCopyWithImpl(
+      _$_OperationListModel _value, $Res Function(_$_OperationListModel) _then)
+      : super(_value, (v) => _then(v as _$_OperationListModel));
 
   @override
-  _OperationListModel get _value => super._value as _OperationListModel;
+  _$_OperationListModel get _value => super._value as _$_OperationListModel;
 
   @override
   $Res call({
     Object? results = freezed,
   }) {
-    return _then(_OperationListModel(
+    return _then(_$_OperationListModel(
       results: results == freezed
-          ? _value.results
+          ? _value._results
           : results // ignore: cast_nullable_to_non_nullable
               as List<OperationModel>,
     ));
@@ -113,13 +95,18 @@ class __$OperationListModelCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_OperationListModel implements _OperationListModel {
-  const _$_OperationListModel({required this.results});
+  const _$_OperationListModel({required final List<OperationModel> results})
+      : _results = results;
 
   factory _$_OperationListModel.fromJson(Map<String, dynamic> json) =>
       _$$_OperationListModelFromJson(json);
 
+  final List<OperationModel> _results;
   @override
-  final List<OperationModel> results;
+  List<OperationModel> get results {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_results);
+  }
 
   @override
   String toString() {
@@ -130,18 +117,20 @@ class _$_OperationListModel implements _OperationListModel {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _OperationListModel &&
-            const DeepCollectionEquality().equals(other.results, results));
+            other is _$_OperationListModel &&
+            const DeepCollectionEquality().equals(other._results, _results));
   }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(results));
 
   @JsonKey(ignore: true)
   @override
-  _$OperationListModelCopyWith<_OperationListModel> get copyWith =>
-      __$OperationListModelCopyWithImpl<_OperationListModel>(this, _$identity);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_results));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_OperationListModelCopyWith<_$_OperationListModel> get copyWith =>
+      __$$_OperationListModelCopyWithImpl<_$_OperationListModel>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -150,16 +139,16 @@ class _$_OperationListModel implements _OperationListModel {
 }
 
 abstract class _OperationListModel implements OperationListModel {
-  const factory _OperationListModel({required List<OperationModel> results}) =
-      _$_OperationListModel;
+  const factory _OperationListModel(
+      {required final List<OperationModel> results}) = _$_OperationListModel;
 
   factory _OperationListModel.fromJson(Map<String, dynamic> json) =
       _$_OperationListModel.fromJson;
 
   @override
-  List<OperationModel> get results;
+  List<OperationModel> get results => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$OperationListModelCopyWith<_OperationListModel> get copyWith =>
+  _$$_OperationListModelCopyWith<_$_OperationListModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
